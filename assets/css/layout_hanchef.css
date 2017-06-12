@@ -874,12 +874,14 @@ html a:active, body a:active {
     display: inline-block
 }
 
-#AXUHeader .mx-header-overay nav ul.option-menu li a span.icon1 {
-    background: url("/assets/images/logo-medium-32.svg") no-repeat center center
+#AXUHeader .mx-header-overay nav ul.option-menu li a span.facebook {
+    background: url("/assets/images/facebook_circled_64x64.png") no-repeat left center;
+    background-size: 30px;
 }
 
-#AXUHeader .mx-header-overay nav ul.option-menu li a span.icon2 {
-    background: url("/assets/images/logo-hero-32.svg") no-repeat center center
+#AXUHeader .mx-header-overay nav ul.option-menu li a span.instagram {
+    background: url("/assets/images/instagram_circled_64x64.png") no-repeat left center;
+    background-size: 30px;
 }
 
 #AXUHeader .mx-header-overay nav ul.option-menu li a span.icon3 {
