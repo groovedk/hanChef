@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>Han Chef : D Alicia Kitchen</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/favicons/hanchef_144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/favicons/hanchef_152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/hanchef_180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/hanchef_32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/hanchef_16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="/assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="/assets/js/jquery.timeago.js" type="text/javascript"></script>
+    <script src="/assets/js/typed.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="/assets/css/justifiedGallery.min.css">
+    <script src="/assets/js/jquery.justifiedGallery.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+    <script src="/assets/js/jquery.magnific-popup.js"></script>
+
+    <script type="text/javascript">
+        var fnObj = {
+            pageStart: function(){
+                //Hamburger menu
+                jQuery(".hamburger-menu").click(function(){
+
+                    jQuery(".hamburger").toggleClass('is-active');
+                    jQuery(".mx-header-overay").toggleClass('open');
+
+                });
+
+                //Timeago
+                
+                jQuery.timeago.settings.strings.suffixAgo = "전";
+                jQuery.timeago.settings.strings.suffixFromNow = "지금부터";
+                jQuery.timeago.settings.strings.inPast = "지금";
+                jQuery.timeago.settings.strings.seconds = "1분 이내";
+                jQuery.timeago.settings.strings.mintue = "약 1분";
+                jQuery.timeago.settings.strings.mintues = "%d분";
+                jQuery.timeago.settings.strings.hour = "약 1시간";
+                jQuery.timeago.settings.strings.hours = "약 %d시간";
+                jQuery.timeago.settings.strings.day = "약 1시간";
+                jQuery.timeago.settings.strings.days = "%d시간";
+                jQuery.timeago.settings.strings.month = "약 1달";
+                jQuery.timeago.settings.strings.months = "%d달";
+                jQuery.timeago.settings.strings.year = "약 1년";
+                jQuery.timeago.settings.strings.years = "%d년";
+                
+
+                jQuery.timeago.settings.allowFuture = true;
+                jQuery("time.timeago").timeago();
+
+                //Typed...
+                Typed.new('#typed', {
+                    //strings:typed_strings,
+                    stringsElement: document.getElementById('typed-msgs'),
+                    contentType: 'html',
+                    shuffle: true,
+                    typeSpeed: 100,
+                    startDelay: 500,
+                    backDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                });
+
+
+                //Markdown 타임라인용 갤러리 지원
+                jQuery('.gallery').each(function() {
+                    if (jQuery(this.parentNode).hasClass('flex-images')) return;
+                    jQuery(this).nextUntil(':not(.gallery)').addBack().wrapAll("<div class='flex-images mp-gallery'>");
+                });
+
+                jQuery('.flex-images').find('.gallery').each(function(){
+                    var src = jQuery(this).prop("src");
+                    jQuery(this).wrap("<a href='"+src+"' >");
+                    //console.log(src);
+                });
+                jQuery(".flex-images").justifiedGallery({
+                    rowHeight : 80,
+                    lastRow : 'justify',
+                    margins : 0,
+                    captions:false,
+                    randomize:true
+                });
+
+
+                //Magnific popup
+                jQuery('.mp-gallery').each(function() { // the containers for all your galleries
+                    jQuery(this).magnificPopup({
+                        delegate: 'a', // the selector for gallery item
+                        type: 'image',
+                        gallery: {
+                            enabled:true
+                        }
+                    });
+                });
+
+
+
+                //jQuery('.flex-images').find('.gallery').wrap("<a href='"+jQuery(this).attr('src')+"' >");
+
+
+                //Flex Images...
+
+                //jQuery("#AXUTimeline img[class^='gallery']").wrap("<div class='flex-images' />");
+                //var first_evt = jQuery("#AXUTimeline").find(".flex-image").find(".gallery").wrap("<a href='#' />");
+
+                /*
+                jQuery.when.apply(this, first_evt).done(function(){
+                    second_evt;
+                });
+                */
+
+                //jQuery("#AXUTimeline").find(".gallery").wrapAll("<div class='flex-images' />");
+
+            },
+            //When scrolling add bar shadow class...
+            pageScroll:function(){
+
+                if(jQuery(this).scrollTop()) {
+                    jQuery('#AXUHeader .header-bar').addClass('scrolled');
+                    jQuery('#AXUHeader .mx-header-bar').addClass('scrolled');
+                } else {
+                    jQuery('#AXUHeader .header-bar').removeClass('scrolled');
+                    jQuery('#AXUHeader .mx-header-bar').removeClass('scrolled');
+                }
+            },
+            //Random Timeline Images..
+            pageResize: function(){
+
+            }
+        }
+
+        jQuery(document.body).ready(function(){
+
+            if (!window.getComputedStyle) {
+                window.getComputedStyle = function(element) {
+                    return element.currentStyle;
+                }
+            }
+            fnObj.pageStart();
+            jQuery(window).resize(fnObj.pageResize);
+            jQuery(window).scroll(fnObj.pageScroll);
+        });
+
+    </script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-56252826-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/lang_ko.css">
+    <link rel="stylesheet" href="/assets/css/layout_hanchef.css">
+    <link rel="stylesheet" href="/assets/css/contents_hanchef.css">
+
+    <style type="text/css">
+        .logoInImage{
+            position: absolute;
+            top: 100px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="AXUBody">
+
+    <div id="AXUHeader">
+        <div class="header-bar-fixed"></div>
+        <div class="axu-layer mx-header-hamburger">
+            <div class="axu-wrap">
+                <a href="#axu" class="hamburger-menu">
+                    <div class="hamburger">
+                        <div class="hamburger-box">
+                            <div class="hamburger-inner"></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="axu-layer mx-header-overay">
+            <nav>
+                <ul class="top-menu">
+                    <li><a href="/" class="on"><span class="bullet"></span>HAN CHEF</a></li>
+                    <!--<li><a href="/catering.html" class="" ><span class="bullet"></span>CATERING</a></li>-->
+                </ul>
+
+                <ul class="option-menu">
+                    <li><a href="https://www.instagram.com/d_alicia_kitchen/" target="_blank" class="justIcon"><span class="instagram"></span></a></li>
+                    <li><a href="https://www.facebook.com/D.Alicia.kitchen/" target="_blank" class="justIcon"><span class="facebook"></span></a></li>
+                </ul>
+
+            </nav>
+        </div>
+        <div class="axu-layer mx-header-bar">
+            <div class="axu-wrap">
+                <div class="axu-unit">
+                    <div class="header-logo">
+                         <a href="/" target="_self" >
+                             <span class="symbolic hanchef"></span>
+                             <div class="descript">HAN CHEF &#58; D ALICIA KITCHEN</div>
+                         </a>
+                     </div>
+                </div>
+            </div>
+         </div>
+
+        <div class="axu-layer header-bar">
+            <div class="axu-wrap">
+                <div class="axu-left">
+                    <div class="axu-unit">
+                        <div class="header-logo">
+                            <a href="/" target="_self" >
+                                <span class="symbolic hanchef"></span>
+                                <div class="descript">HAN CHEF &#58; D ALICIA KITCHEN</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="axu-right">
+                    <div class="axu-unit">
+                        <ul class="top-menu">
+                            <li><a href="/" class="on">HAN CHEF</a></li>
+                            <!--<li><a href="/catering.html" class="">CATERING</a></li>-->
+                        </ul>
+
+                        <ul class="option-menu">
+                            <li><a href="https://www.instagram.com/d_alicia_kitchen/" target="_blank" class="justIcon"><span class="instagram"></span></a></li>
+                            <li><a href="https://www.facebook.com/D.Alicia.kitchen/" target="_blank" class="justIcon"><span class="facebook"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="axu-clear"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="AXUContents">
+
+    <!-- s.AXVisual -->
+    <div id="AXUVisual">
+        <div class="visual-top">
+            <div class="axu-layer visual-top-layer">
+                <div class="axu-wrap">
+                    <div class="axu-col-2">
+                        <div class="logo">
+                            <!--
+                            <img src="/assets/images/page_logo_axboot@2x.png" />
+                            <span>AXBoot</span>
+                            -->
+                        </div>
+                    </div>
+                    <div class="axu-col-10">
+                        <ul class="menu">
+                            <li><a href="#resume">경력</a></li>
+                            <li><a href="#video">소개영상</a></li>
+                            <li><a href="#course">메뉴구성</a></li>
+                            <li><a href="#price">가격/환불</a></li>
+                            <li><a href="#contact">CONTACT US</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="axu-layer visual-message-layer">
+            <div class="axu-wrap">
+                <h1>풀스택 웹 애플리케이션 개발 프레임워크</h1>
+                <h2><span id="typed"></span></h2>
+                <div id="typed-msgs">
+                    <p>AXBoot와 함께라면 개발이 즐겁다.</p>
+                    <p>AXBoot 엔진으로 더 빠르고 즐거운 웹 개발을 시작하세요.</p>
+                </div>
+            </div>
+        </div>
+        -->
+        <div class="axu-layer visual-image-layer">
+            <div class="axu-h50"></div>
+            <div class="axu-wrap">
+                <div class="logoInImage"></div>
+                <img src="/assets/images/aliciaHan.jpg" />
+            </div>
+        </div>
+        <div class="axu-layer visual-desc-layer">
+            <div class="axu-wrap">
+                <h3>Own your special catering!</h3>
+                <p>비지니스 파티, 스몰 웨딩, 홈 파티 등 소규모 모임을 위한 특별한 케이터링. Han Chef 가 당신만을 위해 준비하는 특별한 하루를 경험하세요.</p>
+                <!--
+                <div class="btns">
+                    <button onclick="location.href='http://demo.axboot.com/';" class="btn-1">Demo</button>
+                    <button onclick="location.href='https://github.com/axboot';" class="btn-2">Github Repository</button>
+                    <button onclick="location.href='http://start.axboot.com/';" class="btn-3">AXBoot Initialzr</button>
+                </div>
+                -->
+            </div>
+        </div>
+        <div class="axu-h50"></div>
+    </div>
+    <!-- e.AXVisual -->
+
+    <!-- s.AXUResume -->
+    <a name="resume"></a>
+    <div id="AXUResume">
+        <div class="axu-layer">
+            <div class="axu-section-title">
+                <h3><span>경력</span></h3>
+            </div>
+        </div>
+        <div class="axu-layer feature-layer">
+            <div class="axu-wrap">
+                
+                <div class="axu-col-6 resume-column">
+                    <div class="axu-unit">
+                        <!--<img src="/assets/images/axboot-feature-1@2x.png" style="width:64px; height:64px;" />-->
+                        <h3>이력</h3>
+                            <h4>2008 ~ 2012 </h4>
+                            <p>서울시 이태원 소재 올 아메리칸 다이너 Head chef </p>
+                            <div class="axu-h10"></div>
+                            <h4>2005 ~ 2007 </h4>
+                            <p>호주 시드니 서큘러키 소재 이탈리안 레스토랑 Sous chef</p>
+                            <div class="axu-h10"></div>
+                            <h4>2000 ~ 2004 </h4>
+                            <p>강원도 원주 소재 이탈리안 레스토랑 2nd cook</p>
+                            <div class="axu-h10"></div>
+                    </div>
+                    <div class="axu-h50"></div>
+                </div>
+                
+                <div class="axu-col-6 resume-column">
+                    <div class="axu-unit">
+                        <!--<img src="/assets/images/axboot-feature-2@2x.png" style="width:64px; height:64px;" />-->
+                        <h3>자격증</h3>
+
+                        <h4>산업기사 </h4>
+                        <p>양식 산업기사 </p>
+                        <div class="axu-h10"></div>
+                        <h4>기능사</h4>
+                        <p>한식 기능사, 양식 기능사, 일식 기능사, 중식 기능사 및 조주사 기능사</p>
+                        <div class="axu-h10"></div>
+                    </div>
+                    <div class="axu-h50"></div>
+                </div>
+                
+
+                <div class="axu-clear"></div>
+            </div>
+        </div>
+    </div>
+    <!-- e.AXUFeatures -->
+
+    <!-- s.AXUVideos -->
+    <a name="video"></a>
+    <div id="AXUVideos">
+        <div class="axu-layer">
+            <div class="axu-section-title">
+                <h3><span>소개영상</span></h3>
+            </div>
+        </div>
+        <div class="mp-gallery">
+            <div class="axu-layer">
+                <div class="axu-wrap">
+
+                    <div class="axu-col-12 video-column">
+
+                        <!--
+                        <a href="https://www.youtube.com/watch?v=7CbEWftw0eo" class="video-card mfp-iframe" title="D Alicia Kitchen">
+                            <div class="btn-box">
+                                <div class="btn-play"></div>
+                            </div>
+                            <img src="/assets/images/axboot-video-1.png" />
+                            <div class="video-title">D Alicia Kitchen</div>
+                        </a>
+                        -->
+                    </div>
+                    <div class="axu-clear"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- e.AXUVideos -->
+
+    <!-- s.AXUDocuments -->
+    <a name="course"></a>
+    <div id="AXUCourse">
+        <div class="axu-layer">
+            <div class="axu-section-title">
+                <h3><span>메뉴구성</span></h3>
+            </div>
+        </div>
+        <div class="axu-layer">
+            <div class="axu-wrap">
+                <div class="axu-col-6 course-column">
+                    <div class="course-card">
+                        <!--<img src="/assets/images/axboot-doc-1@2x.png" />-->
+                        <h3>Course A</h3>
+                        <p>고기와 해산물, 야채, 과일을 모두 구성한 우리 입맛에 맞는 든든한 한끼식사 코스.</p>
+
+                        <h4>1. 통삼겹살 오븐구이와 미나리무침</h4>
+                        <p>겉은 바삭 속은 촉촉! 특제소스를 발라 구워 기름기 쏙 뺀 통삼겹살, 개운하고 상큼한 새콤 향긋 미나리 무침.</p>
+                        <div class="axu-h10"></div>
+                        <h4>2. 그릴드 베지터블 (버섯, 두부, 부추, 가지)</h4>
+                        <p>들깨소스를 곁들여 더욱 고소하고 맛있는 버터 그릴 채소.</p>
+                        <div class="axu-h10"></div>
+                        <h4>3. 과일 샐러드</h4>
+                        <p>상큼함이 톡톡톡! 제철 과일을 이용한 건강하고 신선한 샐러드.</p>
+                        <div class="axu-h10"></div>
+                        <h4>4. 치킨 필라프</h4>
+                        <p>치킨스톡을 사용해서 더욱 깊고 진한 맛! 밥알이 꼬슬꼬슬~ 치킨 브레스트 필라프.</p>
+                        <div class="axu-h10"></div>
+                        <h4>5. 새우 파타이</h4>
+                        <p>매콤하고 고소한 동남아식 볶음 쌀국수 면요리! 다양한 야채를 특제소스에 볶아 만든 타이푸드.</p>
+                        <div class="axu-h10"></div>
+
+                    </div>
+                </div>
+                
+                <div class="axu-col-6 course-column">
+                    <div class="course-card">
+                        <!--<img src="/assets/images/axboot-doc-2@2x.png" />-->
+                        <h3>Course B</h3>
+                        <p>입안에서 펼쳐지는 이탈리안 푸드와 아메리칸 푸드의 조화. 건강하고 색다른 감각의 코스 요리.</p>
+
+                        <h4>1. 치즈 롤 스테이크</h4>
+                        <p>소고기 부채살을 두드려 시금치와 수제 리코타치즈를 넣어 구운 영양 가득한 롤 스테이크!</p>
+                        <div class="axu-h10"></div>
+                        <h4>2. 리코타 치즈 샐러드</h4>
+                        <p>크랜베리, 아몬드, 호두, 수제 리코타치즈를 얹어 발사믹 드레싱을 곁들인 시금치 샐러드.</p>
+                        <div class="axu-h10"></div>
+                        <h4>3. 양송이 베이컨 크림파스타</h4>
+                        <p>부드러운 크림소스에 탱글탱글한 양송이 버섯과 짭쪼롬한 베이컨을 넣어 만든 고소함이 퐁당! 크림 파스타.</p>
+                        <div class="axu-h10"></div>
+                        <h4>4. 수제 미니 햄버거</h4>
+                        <p>소고기 양지, 목심, 갈비살을 섞어 특제소스를 넣어 만든 건강한 수제패티 햄버거.</p>
+                        <div class="axu-h10"></div>
+                        <h4>5. 바질 페스토 까나페</h4>
+                        <p>바삭한 크래커 위에 계란 노른자와 바질페스토, 체다치즈의 환상적인 맛!</p>
+                        <div class="axu-h10"></div>
+                        
+                    </div>
+                </div>
+                
+                <div class="axu-clear"></div>
+            </div>
+        </div>
+    </div>
+    <!-- e.AXUDocuments -->
+
+    <!-- s.AXUThemes -->
+    <a name="price"></a>
+    <div id="AXUPrice">
+        <div class="axu-layer">
+            <div class="axu-section-title">
+                <h3><span>가격 / 환불규정</span></h3>
+            </div>
+        </div>
+        <div class="axu-layer">
+            <div class="axu-wrap">
+                <div class="axu-col-6 price-column">
+                    <div class="axu-unit">
+                        <!--<img src="/assets/images/axboot-feature-1@2x.png" style="width:64px; height:64px;" />-->
+                        <h3>가격</h3>
+                        <p>1인 A-25,000원 B-30,000원 (7세~13세 50%할인) </p>
+                        <p> 보증인원 10명, 2명단위 주문 </p>
+                    </div>
+                    <div class="axu-h50"></div>
+
+                </div>
+                <div class="axu-col-6 price-column">
+                    <div class="axu-unit">
+                        <!--<img src="/assets/images/axboot-feature-1@2x.png" style="width:64px; height:64px;" />-->
+                        <h3>환불규정</h3>
+                        <p> 3일전 100% 환불 됨</p>
+                        <p> 2일전 50% 환불 됨</p>
+                        <p> 1일전 30% 환불 됨</p>
+                        <p> 당일불가</p>
+                        </p>
+                    </div>
+                    <div class="axu-h50"></div>
+
+                </div>
+                <div class="axu-clear"></div>
+                <!--
+                <div class="mp-gallery">
+                    <div class="axu-col-4 theme-column">
+                        <a href="/assets/images/axboot-theme-1.jpg" class="theme-card" title="AXBoot 메인, 아롱이 테마">
+                            <img src="/assets/images/axboot-theme-1.jpg" />
+                            <div class="theme-overlay">
+                                <div class="to-content">
+                                    <h4>아롱이 테마</h4>
+                                    <p>AXBoot 메인</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="axu-col-4 theme-column">
+                        <a href="/assets/images/axboot-theme-2.jpg" class="theme-card" title="AXBoot 프로젝트 관리자, 아롱이 테마">
+                            <img src="/assets/images/axboot-theme-2.jpg" />
+                            <div class="theme-overlay">
+                                <div class="to-content">
+                                    <h4>아롱이 테마</h4>
+                                    <p>AXBoot 프로젝트 관리자</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="axu-col-4 theme-column">
+                        <a href="/assets/images/axboot-theme-3.jpg" class="theme-card" title="AXBoot 메뉴 관리, 도베르만 테마">
+                            <img src="/assets/images/axboot-theme-3.jpg" />
+                            <div class="theme-overlay">
+                                <div class="to-content">
+                                    <h4>도베르만 테마</h4>
+                                    <p>AXBoot 메뉴 관리</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="axu-col-4 theme-column">
+                        <a href="/assets/images/axboot-theme-4.jpg" class="theme-card" title="AXBoot 사용자 관리, 도베르만 테마">
+                            <img src="/assets/images/axboot-theme-4.jpg" />
+                            <div class="theme-overlay">
+                                <div class="to-content">
+                                    <h4>도베르만 테마</h4>
+                                    <p>AXBoot 사용자 관리</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="axu-col-4 theme-column">
+                        <a href="/assets/images/axboot-theme-5.jpg" class="theme-card" title="AXBoot 공통코드 관리, 도베르만 테마">
+                            <img src="/assets/images/axboot-theme-5.jpg" />
+                            <div class="theme-overlay">
+                                <div class="to-content">
+                                    <h4>도베르만 테마</h4>
+                                    <p>AXBoot 공통코드 관리</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="axu-col-4 theme-column">
+                        <a href="/assets/images/axboot-theme-6.jpg" class="theme-card" title="AXBoot 에러로그 관리, 도베르만 테마">
+                            <img src="/assets/images/axboot-theme-6.jpg" />
+                            <div class="theme-overlay">
+                                <div class="to-content">
+                                    <h4>도베르만 테마</h4>
+                                    <p>AXBoot 에러로그 관리</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                <div class="axu-clear"></div>
+                </div>
+                -->
+            </div>
+        </div>
+    </div>
+    <!-- e.AXDocuments -->
+
+    <a name="contact"></a>
+    <div id="AXUContact">
+        <div class="axu-layer contact-layer">
+
+            <div class="axu-section-title">
+                <h3><span>CONTACT US</span></h3>
+            </div>
+            <div class="axu-wrap">
+<!--
+                <div class="axu-col-6 cont-column">
+                    <div class="cont-card">
+                        <img src="/assets/images/axboot-contact-1@2x.png" />
+                        <h3>도움이 필요하신가요?</h3>
+                        <p>AXBoot 웹 애플리케이션 개발에 어려움이 있으신가요? Java, HTML5, JavaScript 등 분야별 최고의 엔지니어와 서비스 전문가가 당신의 비즈니스를 성공적으로 도와드립니다.</p>
+                    </div>
+                </div>
+                -->
+                <div class="axu-col-12 cont-column">
+                    <div class="cont-card">
+                        <img src="/assets/images/axboot-contact-2@2x.png" />
+                        <h3>오후 01-07 / 월요일-금요일</h3>
+                        <p>문의 사항이 있으시면 연락주세요.</p>
+                        <a href="mailto:groovedk@naver.com" class="btn">groovedk@naver.com</a>
+                        <a href="#contact">카카오톡 준비중</a>
+                    </div>
+                </div>
+                <div class="axu-clear"></div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- s.AXUMembers -->
+    <!--
+    <a name="member"></a>
+    <div id="AXUMembers">
+        <div class="axu-layer member-layer">
+            <div class="axu-section-title">
+                <h3><span></span></h3>
+            </div>
+            <div class="axu-wrap">
+                
+                <div class="axu-col-6 member-column">
+                    <div class="member-card" style="background: url('/assets/images/member-tom.png') no-repeat; background-size: contain;">
+                        <div class="member-name-title">
+                            <div>Thomas Jang</div>
+                            <span>Web UI Expert</span>
+                        </div>
+                        <div class="member-info-box">
+                            <div class="mib-title">
+                                <div>Thomas Jang</div>
+                                <span>Web UI Expert</span>
+                                <ul>
+                                    
+                                    <li><a href="https://github.com/thomasjang">Github</a></li>
+                                    
+                                    <li><a href="https://medium.com/chequer">Blog</a></li>
+                                    
+                                    <li><a href="https://www.facebook.com/axisjtom">Facebook</a></li>
+                                    
+                                </ul>
+                                <div class="axu-clear"></div>
+                            </div>
+                            <div class="mib-body">
+                                <div class="desc">Thomas Jang is one of the best front-end engineers in Korea with more than 15 years web application development work exprience.</div>
+                                <ul>
+                                    
+                                    <li>HTML5, CSS, JavaScript Expert</li>
+                                    
+                                    <li>Web Application Interface Professional</li>
+                                    
+                                    <li>Creator of Full Stack Web UI Framework</li>
+                                    
+                                    <li>Creator of Advanced HTML5 UI Framework</li>
+                                    
+                                    <li>Global Opensource Frontier - NIPA</li>
+                                    
+                                    <li>The Winner of Super Developer K3 Award- NIA</li>
+                                    
+                                    <li>OSS World Challenge 2016 first prize</li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="axu-col-6 member-column">
+                    <div class="member-card" style="background: url('/assets/images/member-brant.png') no-repeat; background-size: contain;">
+                        <div class="member-name-title">
+                            <div>Brant Hwang</div>
+                            <span>Java & Server Expert</span>
+                        </div>
+                        <div class="member-info-box">
+                            <div class="mib-title">
+                                <div>Brant Hwang</div>
+                                <span>Java & Server Expert</span>
+                                <ul>
+                                    
+                                    <li><a href="https://github.com/brant-hwang">Github</a></li>
+                                    
+                                    <li><a href="https://medium.com/chequer">Blog</a></li>
+                                    
+                                    <li><a href="https://www.facebook.com/tjdus3361">Facebook</a></li>
+                                    
+                                    <li><a href="https://www.linkedin.com/in/ishwang/">LinkedIn</a></li>
+                                    
+                                </ul>
+                                <div class="axu-clear"></div>
+                            </div>
+                            <div class="mib-body">
+                                <div class="desc">Brant Hwang is a back-end engineer who manages Distributed Processing, Java, Spring Framework</div>
+                                <ul>
+                                    
+                                    <li>Java, Spring Framework, Linux Expert</li>
+                                    
+                                    <li>Former E-Commerce Platform, Commerce Service Developer at KAKAO</li>
+                                    
+                                    <li>Former POS Platform, POS Software Developer - Alternative Military Service</li>
+                                    
+                                    <li>Cloud Infrastructure Design & Automation Professional</li>
+                                    
+                                    <li>Microsoft Certified System Engineer, IT Professional, Technology Specialist, Database Administrator</li>
+                                    
+                                    <li>Oracle Certified Database Professional</li>
+                                    
+                                    <li>Sun Certified Network, System Engineer & Java Programmer</li>
+                                    
+                                    <li>Certified Linux Server Professional</li>
+                                    
+                                    <li>Spring Boot in Action Korean version translator - Spring Boot Coding Factory</li>
+                                    
+                                    <li>OSS World Challenge 2016 first prize</li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="axu-clear"></div>
+            </div>
+        </div>
+    </div>
+    -->
+    <!-- e.AXUMemeber -->
+
+</div>
+    <div id="AXUFooter">
+    <div class="axu-layer footer-1">
+        <div class="axu-wrap">
+            <div class="axu-col-6 left">
+                <div class="axu-unit">
+                    <span class="copy">© hanChef 2017</span>
+                    <!--
+                    <ul class="lang">
+                        <li><a  href=" /en/axboot/ ">EN</a></li>
+                        <li><a class="on" href=" /axboot/ ">KO</a></li>
+                    </ul>
+                    -->
+                </div>
+            </div>
+            <div class="axu-col-6 right">
+                <div class="ax-unit">
+                    <ul class="bottom_menu">
+                        <li><a href="/">hanChef</a></li>
+                        <li><a href="/">사대사</a></li>
+                        <li><a href="/">the better life lab</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="axu-clear"></div>
+        </div>
+    </div>
+        <!--
+    <div class="axu-layer footer-2">
+        <div class="axu-wrap">
+            <div class="ax-unit">
+                <h4>Sponsors</h4>
+                <ul>
+                    <li><a href="https://www.jetbrains.com" target="_blank">JetBrains</a></li>
+                    <li><a href="https://www.atlassian.com/" target="_blank">Atlassian</a></li>
+                    <li><a href="http://www.chequer.io" target="_blank">CHEQUER</a></li>
+                    <li><a href="http://www.dnsever.com" target="_blank">DNSEver</a></li>
+                    <li><a href="http://www.antwiz.com" target="_blank">Antwiz</a></li>
+                    <li><a href="http://www.flybasket.com" target="_blank">FlyBasket</a></li>
+                </ul>
+                <div class="axu-clear"></div>
+            </div>
+        </div>
+    </div>
+        -->
+</div>
+
+
+</div>
+</body>
+</html>
