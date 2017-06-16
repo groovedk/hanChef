@@ -751,7 +751,11 @@ html, body {
 }
 
 #AXUPrice {
-    padding-bottom: 50px
+    padding-bottom: 50px;
+    background: #fff;
+}
+#AXUPrice .axu-section-title h3 span {
+    background: #fff;
 }
 
 #AXUPrice .theme-link {
