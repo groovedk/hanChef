@@ -956,6 +956,9 @@ html, body {
     padding:0;
     border:none;
 }
+#AXUContact .cont-column .cont-card a#kakao-plus:hover {
+    background: none;
+}
 
 #AXUContact .cont-column .cont-card a#kakao-plus img{
     width: 180px;
